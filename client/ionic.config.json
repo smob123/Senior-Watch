@@ -1,0 +1,7 @@
+{
+  "name": "senior_watch",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

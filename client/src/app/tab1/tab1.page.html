@@ -1,0 +1,56 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Recent Activity
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Recent Activity</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <!-- the latest time and place of the senior's activity -->
+  <ion-title class='ion-margin-top'>
+    Last Seen:
+  </ion-title>
+  <ion-item class='ion-margin-top ion-margin-bottom'>
+    <div slot='start'>
+      <ion-icon name="location-outline" style='zoom: 1.5;'></ion-icon>
+      <span> {{lastActivity.room}}</span>
+    </div>
+
+    <div slot='end'>
+      <ion-icon name="time-outline" style='zoom: 1.5;'></ion-icon>
+      <span> {{lastActivity.time}}</span>
+    </div>
+  </ion-item>
+
+  <!-- the list of all the rooms -->
+  <div *ngFor='let room of rooms'>
+    <ion-card [routerLink]="['/rooms/', room.room]">
+      <ion-item>
+        <ion-thumbnail>
+          <ion-img [src]='room.image'></ion-img>
+        </ion-thumbnail>
+
+        <ion-card-header>
+          <!-- the name of the room -->
+          <ion-card-title>
+            {{room.room}}
+          </ion-card-title>
+
+          <!-- the number of movements in the room -->
+          <ion-card-subtitle>
+            Number of movements: {{room.numberOfActions}}
+          </ion-card-subtitle>
+        </ion-card-header>
+
+      </ion-item>
+    </ion-card>
+  </div>
+
+</ion-content>

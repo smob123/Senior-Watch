@@ -1,0 +1,52 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Battery Levels
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Battery Levels</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div *ngFor='let level of batteryLevels'>
+    <ion-card>
+      <ion-item>
+        <ion-thumbnail>
+          <ion-img [src]='level.image'></ion-img>
+        </ion-thumbnail>
+
+        <ion-card-header>
+          <!-- the name of the room -->
+          <ion-card-title>
+            {{level.room}}
+          </ion-card-title>
+
+          <!-- the battery level -->
+          <ion-card-subtitle>
+            Battery Level: {{level.batteryLevel}}%
+          </ion-card-subtitle>
+        </ion-card-header>
+
+        <!-- only displayed when the battery level is 20% at most -->
+        <ion-text slot='end' color='danger' *ngIf='level.batteryLevel <= 20 && level.batteryLevel >= 0'>
+          <p>
+            Please charge
+          </p>
+        </ion-text>
+
+        <!-- only displayed when the battery level has not been updated from the intial state -->
+        <ion-text slot='end' color='danger' *ngIf='level.batteryLevel < 0'>
+          <p>
+            Unknown State
+          </p>
+        </ion-text>
+
+      </ion-item>
+    </ion-card>
+  </div>
+</ion-content>

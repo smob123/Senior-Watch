@@ -1,0 +1,50 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Most Visited Rooms
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Most Visited Rooms</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <!-- the senior's activity chart -->
+  <canvas class='ion-margin-top' baseChart [datasets]='chartData' [labels]="chartLabels" [options]="chartOptions"
+    chartType='radar'>
+  </canvas>
+
+  <br />
+
+  <!-- list of the senior's activity in a descending order -->
+  <ion-title class='ion-margin-top'>
+    Number of Visits Per Room:
+  </ion-title>
+
+  <!-- displayed when there is no data available -->
+  <ion-title class='ion-margin-top ion-text-center' *ngIf='mostVisitedLocations.length === 0'>
+    No data available
+  </ion-title>
+
+  <ion-grid *ngFor='let location of mostVisitedLocations' class='ion-margin-start'>
+    <ion-row>
+      <!-- the name of the room -->
+      <ion-col>
+        <p>
+          {{location.room}}
+        </p>
+      </ion-col>
+
+      <!-- the number of actions in the room -->
+      <ion-col>
+        <p>
+          {{location.numberOfActions}}
+        </p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

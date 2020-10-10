@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/tab1"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{roomName}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-title class='ion-margin-top ion-text-center' *ngIf='!chartData || chartData.length === 0'>
+    No data to show
+  </ion-title>
+
+  <canvas class='ion-margin-top' baseChart [datasets]='chartData' [labels]="chartLabels" [options]="chartOptions"
+    chartType='line' *ngIf='chartData && chartData.length > 0'>
+  </canvas>
+
+</ion-content>
