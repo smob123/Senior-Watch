@@ -44,5 +44,7 @@ ionic serve
 
 ## Credits
 Icons were taken from:
+<br />
 www.flaticon.com
+<br />
 https://www.iconfinder.com/
